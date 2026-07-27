@@ -88,3 +88,6 @@ Thumbs.db
 data/raw/
 data/interim/
 data/processed/
+
+# Temporary files
+tmp/
