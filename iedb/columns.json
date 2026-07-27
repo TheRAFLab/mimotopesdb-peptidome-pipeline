@@ -1,0 +1,789 @@
+{
+  "column_count": 112,
+  "columns": [
+    {
+      "index": 0,
+      "group": "Assay ID",
+      "field": "IEDB IRI",
+      "name": "Assay ID - IEDB IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 1,
+      "group": "Reference",
+      "field": "IEDB IRI",
+      "name": "Reference - IEDB IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 2,
+      "group": "Reference",
+      "field": "Type",
+      "name": "Reference - Type",
+      "dtype": "String"
+    },
+    {
+      "index": 3,
+      "group": "Reference",
+      "field": "PMID",
+      "name": "Reference - PMID",
+      "dtype": "Int32"
+    },
+    {
+      "index": 4,
+      "group": "Reference",
+      "field": "Submission ID",
+      "name": "Reference - Submission ID",
+      "dtype": "Int32"
+    },
+    {
+      "index": 5,
+      "group": "Reference",
+      "field": "Authors",
+      "name": "Reference - Authors",
+      "dtype": "String"
+    },
+    {
+      "index": 6,
+      "group": "Reference",
+      "field": "Journal",
+      "name": "Reference - Journal",
+      "dtype": "String"
+    },
+    {
+      "index": 7,
+      "group": "Reference",
+      "field": "Date",
+      "name": "Reference - Date",
+      "dtype": "Int16"
+    },
+    {
+      "index": 8,
+      "group": "Reference",
+      "field": "Title",
+      "name": "Reference - Title",
+      "dtype": "String"
+    },
+    {
+      "index": 9,
+      "group": "Epitope",
+      "field": "Epitope IRI",
+      "name": "Epitope - Epitope IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 10,
+      "group": "Epitope",
+      "field": "Object Type",
+      "name": "Epitope - Object Type",
+      "dtype": "String"
+    },
+    {
+      "index": 11,
+      "group": "Epitope",
+      "field": "Name",
+      "name": "Epitope - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 12,
+      "group": "Epitope",
+      "field": "Reference Name",
+      "name": "Epitope - Reference Name",
+      "dtype": "String"
+    },
+    {
+      "index": 13,
+      "group": "Epitope",
+      "field": "Modified residues",
+      "name": "Epitope - Modified residues",
+      "dtype": "String"
+    },
+    {
+      "index": 14,
+      "group": "Epitope",
+      "field": "Modifications",
+      "name": "Epitope - Modifications",
+      "dtype": "String"
+    },
+    {
+      "index": 15,
+      "group": "Epitope",
+      "field": "Starting Position",
+      "name": "Epitope - Starting Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 16,
+      "group": "Epitope",
+      "field": "Ending Position",
+      "name": "Epitope - Ending Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 17,
+      "group": "Epitope",
+      "field": "IRI",
+      "name": "Epitope - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 18,
+      "group": "Epitope",
+      "field": "Synonyms",
+      "name": "Epitope - Synonyms",
+      "dtype": "String"
+    },
+    {
+      "index": 19,
+      "group": "Epitope",
+      "field": "Source Molecule",
+      "name": "Epitope - Source Molecule",
+      "dtype": "String"
+    },
+    {
+      "index": 20,
+      "group": "Epitope",
+      "field": "Source Molecule IRI",
+      "name": "Epitope - Source Molecule IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 21,
+      "group": "Epitope",
+      "field": "Molecule Parent",
+      "name": "Epitope - Molecule Parent",
+      "dtype": "String"
+    },
+    {
+      "index": 22,
+      "group": "Epitope",
+      "field": "Molecule Parent IRI",
+      "name": "Epitope - Molecule Parent IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 23,
+      "group": "Epitope",
+      "field": "Source Organism",
+      "name": "Epitope - Source Organism",
+      "dtype": "String"
+    },
+    {
+      "index": 24,
+      "group": "Epitope",
+      "field": "Source Organism IRI",
+      "name": "Epitope - Source Organism IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 25,
+      "group": "Epitope",
+      "field": "Species",
+      "name": "Epitope - Species",
+      "dtype": "String"
+    },
+    {
+      "index": 26,
+      "group": "Epitope",
+      "field": "Species IRI",
+      "name": "Epitope - Species IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 27,
+      "group": "Epitope",
+      "field": "Comments",
+      "name": "Epitope - Comments",
+      "dtype": "String"
+    },
+    {
+      "index": 28,
+      "group": "Related Object",
+      "field": "Epitope Relation",
+      "name": "Related Object - Epitope Relation",
+      "dtype": "String"
+    },
+    {
+      "index": 29,
+      "group": "Related Object",
+      "field": "Object Type",
+      "name": "Related Object - Object Type",
+      "dtype": "String"
+    },
+    {
+      "index": 30,
+      "group": "Related Object",
+      "field": "Name",
+      "name": "Related Object - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 31,
+      "group": "Related Object",
+      "field": "Starting Position",
+      "name": "Related Object - Starting Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 32,
+      "group": "Related Object",
+      "field": "Ending Position",
+      "name": "Related Object - Ending Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 33,
+      "group": "Related Object",
+      "field": "IRI",
+      "name": "Related Object - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 34,
+      "group": "Related Object",
+      "field": "Synonyms",
+      "name": "Related Object - Synonyms",
+      "dtype": "String"
+    },
+    {
+      "index": 35,
+      "group": "Related Object",
+      "field": "Source Molecule",
+      "name": "Related Object - Source Molecule",
+      "dtype": "String"
+    },
+    {
+      "index": 36,
+      "group": "Related Object",
+      "field": "Source Molecule IRI",
+      "name": "Related Object - Source Molecule IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 37,
+      "group": "Related Object",
+      "field": "Molecule Parent",
+      "name": "Related Object - Molecule Parent",
+      "dtype": "String"
+    },
+    {
+      "index": 38,
+      "group": "Related Object",
+      "field": "Molecule Parent IRI",
+      "name": "Related Object - Molecule Parent IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 39,
+      "group": "Related Object",
+      "field": "Source Organism",
+      "name": "Related Object - Source Organism",
+      "dtype": "String"
+    },
+    {
+      "index": 40,
+      "group": "Related Object",
+      "field": "Source Organism IRI",
+      "name": "Related Object - Source Organism IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 41,
+      "group": "Related Object",
+      "field": "Species",
+      "name": "Related Object - Species",
+      "dtype": "String"
+    },
+    {
+      "index": 42,
+      "group": "Related Object",
+      "field": "Species IRI",
+      "name": "Related Object - Species IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 43,
+      "group": "Host",
+      "field": "Name",
+      "name": "Host - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 44,
+      "group": "Host",
+      "field": "IRI",
+      "name": "Host - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 45,
+      "group": "Host",
+      "field": "Geolocation",
+      "name": "Host - Geolocation",
+      "dtype": "String"
+    },
+    {
+      "index": 46,
+      "group": "Host",
+      "field": "Geolocation IRI",
+      "name": "Host - Geolocation IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 47,
+      "group": "Host",
+      "field": "Sex",
+      "name": "Host - Sex",
+      "dtype": "String"
+    },
+    {
+      "index": 48,
+      "group": "Host",
+      "field": "Age",
+      "name": "Host - Age",
+      "dtype": "String"
+    },
+    {
+      "index": 49,
+      "group": "Host",
+      "field": "MHC Types Present",
+      "name": "Host - MHC Types Present",
+      "dtype": "String"
+    },
+    {
+      "index": 50,
+      "group": "in vivo Process",
+      "field": "Process Type",
+      "name": "in vivo Process - Process Type",
+      "dtype": "String"
+    },
+    {
+      "index": 51,
+      "group": "in vivo Process",
+      "field": "Disease",
+      "name": "in vivo Process - Disease",
+      "dtype": "String"
+    },
+    {
+      "index": 52,
+      "group": "in vivo Process",
+      "field": "Disease IRI",
+      "name": "in vivo Process - Disease IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 53,
+      "group": "in vivo Process",
+      "field": "Disease Stage",
+      "name": "in vivo Process - Disease Stage",
+      "dtype": "String"
+    },
+    {
+      "index": 54,
+      "group": "in vivo Antigen",
+      "field": "Epitope Relation",
+      "name": "in vivo Antigen - Epitope Relation",
+      "dtype": "String"
+    },
+    {
+      "index": 55,
+      "group": "in vivo Antigen",
+      "field": "Object Type",
+      "name": "in vivo Antigen - Object Type",
+      "dtype": "String"
+    },
+    {
+      "index": 56,
+      "group": "in vivo Antigen",
+      "field": "Name",
+      "name": "in vivo Antigen - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 57,
+      "group": "in vivo Antigen",
+      "field": "Reference Name",
+      "name": "in vivo Antigen - Reference Name",
+      "dtype": "String"
+    },
+    {
+      "index": 58,
+      "group": "in vivo Antigen",
+      "field": "Starting Position",
+      "name": "in vivo Antigen - Starting Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 59,
+      "group": "in vivo Antigen",
+      "field": "Ending Position",
+      "name": "in vivo Antigen - Ending Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 60,
+      "group": "in vivo Antigen",
+      "field": "IRI",
+      "name": "in vivo Antigen - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 61,
+      "group": "in vivo Antigen",
+      "field": "Source Molecule",
+      "name": "in vivo Antigen - Source Molecule",
+      "dtype": "String"
+    },
+    {
+      "index": 62,
+      "group": "in vivo Antigen",
+      "field": "Source Molecule IRI",
+      "name": "in vivo Antigen - Source Molecule IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 63,
+      "group": "in vivo Antigen",
+      "field": "Molecule Parent",
+      "name": "in vivo Antigen - Molecule Parent",
+      "dtype": "String"
+    },
+    {
+      "index": 64,
+      "group": "in vivo Antigen",
+      "field": "Molecule Parent IRI",
+      "name": "in vivo Antigen - Molecule Parent IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 65,
+      "group": "in vivo Antigen",
+      "field": "Source Organism",
+      "name": "in vivo Antigen - Source Organism",
+      "dtype": "String"
+    },
+    {
+      "index": 66,
+      "group": "in vivo Antigen",
+      "field": "Source Organism IRI",
+      "name": "in vivo Antigen - Source Organism IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 67,
+      "group": "in vivo Antigen",
+      "field": "Species",
+      "name": "in vivo Antigen - Species",
+      "dtype": "String"
+    },
+    {
+      "index": 68,
+      "group": "in vivo Antigen",
+      "field": "Species IRI",
+      "name": "in vivo Antigen - Species IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 69,
+      "group": "in vivo Antigen",
+      "field": "Adjuvants",
+      "name": "in vivo Antigen - Adjuvants",
+      "dtype": "String"
+    },
+    {
+      "index": 70,
+      "group": "in vivo Antigen",
+      "field": "Route",
+      "name": "in vivo Antigen - Route",
+      "dtype": "String"
+    },
+    {
+      "index": 71,
+      "group": "in vivo Antigen",
+      "field": "Dose Schedule",
+      "name": "in vivo Antigen - Dose Schedule",
+      "dtype": "String"
+    },
+    {
+      "index": 72,
+      "group": "In vitro Process",
+      "field": "Process Type",
+      "name": "In vitro Process - Process Type",
+      "dtype": "String"
+    },
+    {
+      "index": 73,
+      "group": "In vitro Process",
+      "field": "Epitope Relation",
+      "name": "In vitro Process - Epitope Relation",
+      "dtype": "String"
+    },
+    {
+      "index": 74,
+      "group": "In vitro Process",
+      "field": "Object Type",
+      "name": "In vitro Process - Object Type",
+      "dtype": "String"
+    },
+    {
+      "index": 75,
+      "group": "In vitro Process",
+      "field": "Name",
+      "name": "In vitro Process - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 76,
+      "group": "In vitro Process",
+      "field": "Reference Name",
+      "name": "In vitro Process - Reference Name",
+      "dtype": "String"
+    },
+    {
+      "index": 77,
+      "group": "In vitro Process",
+      "field": "Starting Position",
+      "name": "In vitro Process - Starting Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 78,
+      "group": "In vitro Process",
+      "field": "Ending Position",
+      "name": "In vitro Process - Ending Position",
+      "dtype": "Int32"
+    },
+    {
+      "index": 79,
+      "group": "In vitro Process",
+      "field": "IRI",
+      "name": "In vitro Process - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 80,
+      "group": "In vitro Process",
+      "field": "Source Molecule",
+      "name": "In vitro Process - Source Molecule",
+      "dtype": "String"
+    },
+    {
+      "index": 81,
+      "group": "In vitro Process",
+      "field": "Source Molecule IRI",
+      "name": "In vitro Process - Source Molecule IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 82,
+      "group": "In vitro Process",
+      "field": "Molecule Parent",
+      "name": "In vitro Process - Molecule Parent",
+      "dtype": "String"
+    },
+    {
+      "index": 83,
+      "group": "In vitro Process",
+      "field": "Molecule Parent IRI",
+      "name": "In vitro Process - Molecule Parent IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 84,
+      "group": "In vitro Process",
+      "field": "Source Organism",
+      "name": "In vitro Process - Source Organism",
+      "dtype": "String"
+    },
+    {
+      "index": 85,
+      "group": "In vitro Process",
+      "field": "Source Organism IRI",
+      "name": "In vitro Process - Source Organism IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 86,
+      "group": "In vitro Process",
+      "field": "Species",
+      "name": "In vitro Process - Species",
+      "dtype": "String"
+    },
+    {
+      "index": 87,
+      "group": "In vitro Process",
+      "field": "Species IRI",
+      "name": "In vitro Process - Species IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 88,
+      "group": "Antigen Processing",
+      "field": "Comments",
+      "name": "Antigen Processing - Comments",
+      "dtype": "String"
+    },
+    {
+      "index": 89,
+      "group": "Assay",
+      "field": "Location of Assay Data in Reference",
+      "name": "Assay - Location of Assay Data in Reference",
+      "dtype": "String"
+    },
+    {
+      "index": 90,
+      "group": "Assay",
+      "field": "Method",
+      "name": "Assay - Method",
+      "dtype": "String"
+    },
+    {
+      "index": 91,
+      "group": "Assay",
+      "field": "Response measured",
+      "name": "Assay - Response measured",
+      "dtype": "String"
+    },
+    {
+      "index": 92,
+      "group": "Assay",
+      "field": "Units",
+      "name": "Assay - Units",
+      "dtype": "String"
+    },
+    {
+      "index": 93,
+      "group": "Assay",
+      "field": "IRI",
+      "name": "Assay - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 94,
+      "group": "Assay",
+      "field": "Qualitative Measurement",
+      "name": "Assay - Qualitative Measurement",
+      "dtype": "String"
+    },
+    {
+      "index": 95,
+      "group": "Assay",
+      "field": "Measurement Inequality",
+      "name": "Assay - Measurement Inequality",
+      "dtype": "String"
+    },
+    {
+      "index": 96,
+      "group": "Assay",
+      "field": "Quantitative measurement",
+      "name": "Assay - Quantitative measurement",
+      "dtype": "Float64"
+    },
+    {
+      "index": 97,
+      "group": "Assay",
+      "field": "Number of Subjects Tested",
+      "name": "Assay - Number of Subjects Tested",
+      "dtype": "Int32"
+    },
+    {
+      "index": 98,
+      "group": "Assay",
+      "field": "Number of Subjects Responded",
+      "name": "Assay - Number of Subjects Responded",
+      "dtype": "Int32"
+    },
+    {
+      "index": 99,
+      "group": "Assay",
+      "field": "Response Frequency (%)",
+      "name": "Assay - Response Frequency (%)",
+      "dtype": "Float64"
+    },
+    {
+      "index": 100,
+      "group": "Assay",
+      "field": "PDB ID",
+      "name": "Assay - PDB ID",
+      "dtype": "String"
+    },
+    {
+      "index": 101,
+      "group": "Assay",
+      "field": "Comments",
+      "name": "Assay - Comments",
+      "dtype": "String"
+    },
+    {
+      "index": 102,
+      "group": "Antigen Presenting Cell",
+      "field": "Source Tissue",
+      "name": "Antigen Presenting Cell - Source Tissue",
+      "dtype": "String"
+    },
+    {
+      "index": 103,
+      "group": "Antigen Presenting Cell",
+      "field": "Source Tissue IRI",
+      "name": "Antigen Presenting Cell - Source Tissue IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 104,
+      "group": "Antigen Presenting Cell",
+      "field": "Name",
+      "name": "Antigen Presenting Cell - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 105,
+      "group": "Antigen Presenting Cell",
+      "field": "IRI",
+      "name": "Antigen Presenting Cell - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 106,
+      "group": "Antigen Presenting Cell",
+      "field": "Culture Condition",
+      "name": "Antigen Presenting Cell - Culture Condition",
+      "dtype": "String"
+    },
+    {
+      "index": 107,
+      "group": "MHC Restriction",
+      "field": "Name",
+      "name": "MHC Restriction - Name",
+      "dtype": "String"
+    },
+    {
+      "index": 108,
+      "group": "MHC Restriction",
+      "field": "IRI",
+      "name": "MHC Restriction - IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 109,
+      "group": "MHC Restriction",
+      "field": "Evidence Code",
+      "name": "MHC Restriction - Evidence Code",
+      "dtype": "String"
+    },
+    {
+      "index": 110,
+      "group": "MHC Restriction",
+      "field": "Evidence IRI",
+      "name": "MHC Restriction - Evidence IRI",
+      "dtype": "String"
+    },
+    {
+      "index": 111,
+      "group": "MHC Restriction",
+      "field": "Class",
+      "name": "MHC Restriction - Class",
+      "dtype": "String"
+    }
+  ]
+}
