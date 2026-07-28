@@ -22,6 +22,10 @@ Every shard is therefore read with headers disabled and given the names taken fr
 shard 00. Columns are read as strings so that per-shard dtype inference cannot make
 two shards disagree, then the genuinely numeric columns are cast once at the end.
 
+Those composed names are readable but awkward to query, so the Parquet file uses
+lower snake case **slugs** instead — `Reference - PMID` becomes `reference_pmid`.
+The mapping between the two lives in `iedb/columns.json`.
+
 ## Requirements
 
 - Python >= 3.14
@@ -83,14 +87,40 @@ from iedb.read_raw_data import scan_iedb_data
 
 ligands = (
     scan_iedb_data("tmp/iedb_data")
-    .filter(polars.col("MHC Restriction - Class") == "I")
-    .select(["Epitope - Name", "MHC Restriction - Name"])
+    .filter(polars.col("mhc_restriction_class") == "I")
+    .select(["epitope_name", "mhc_restriction_name"])
     .collect()
 )
 ```
 
 Filter before selecting, or the predicate will reference a column that `select` has
-already dropped.
+already dropped. Pass `slugs=False` to work with the composed IEDB names instead.
+
+### With DuckDB
+
+The slugs need no quoting, so the Parquet file can be queried directly:
+
+```sql
+SELECT mhc_restriction_name,
+       count(*) AS assays,
+       round(avg(epitope_ending_position - epitope_starting_position + 1), 1) AS mean_len
+FROM read_parquet('tmp/iedb_parquet/mhc_ligand_full.parquet')
+WHERE mhc_restriction_class = 'I'
+  AND reference_date >= 2020
+GROUP BY 1
+ORDER BY assays DESC
+LIMIT 5;
+```
+
+```
+┌──────────────────────┬─────────┬──────────┐
+│ mhc_restriction_name │ assays  │ mean_len │
+├──────────────────────┼─────────┼──────────┤
+│ HLA class I          │ 1277482 │      9.6 │
+│ HLA-A*02:01          │  179540 │      9.6 │
+│ HLA-B*07:02          │   52069 │      9.8 │
+└──────────────────────┴─────────┴──────────┘
+```
 
 Use `import_iedb_data(path, n_rows=10)` to pull a small sample into memory. Note that
 `n_rows` applies **per shard**, so `n_rows=10` over 10 shards returns 100 rows; use
@@ -101,10 +131,26 @@ Use `import_iedb_data(path, n_rows=10)` to pull a small sample into memory. Note
 | Path | Contents |
 | ---- | -------- |
 | `tmp/iedb_parquet/mhc_ligand_full.parquet` | 5,749,672 rows x 112 columns |
-| `iedb/columns.json` | Every column's index, group, field, name and dtype |
+| `iedb/columns.json` | Every column's index, group, field, name, slug and dtype |
 
 `columns.json` is committed as a reference for picking columns, and because it diffs
-readably when a future IEDB export changes shape.
+readably when a future IEDB export changes shape. Each entry looks like:
+
+```json
+{
+  "index": 3,
+  "group": "Reference",
+  "field": "PMID",
+  "name": "Reference - PMID",
+  "slug": "reference_pmid",
+  "dtype": "Int32"
+}
+```
+
+`slug` is the column name in the Parquet file; `name` is the composed IEDB name it
+came from, and `group` plus `field` are the two header rows that compose it. `field`
+alone is not unique — `IEDB IRI`, `Name` and `Starting Position` all recur across
+groups — which is why the names are composed in the first place.
 
 ### Dtypes
 
@@ -116,9 +162,9 @@ failure there means the export has changed and `CASTS` needs revisiting. Pass
 
 Two fields are easy to misread:
 
-- `Host - Age` is **not** numeric. It holds free text such as `37-91 years` and
+- `host_age` is **not** numeric. It holds free text such as `37-91 years` and
   `child`, and 87% of its values fail to parse as integers, so it stays a string.
-- `Reference - Date` is a publication **year** (1988–2026), not a full date, so it is
+- `reference_date` is a publication **year** (1988–2026), not a full date, so it is
   an `Int16`.
 
 ### Compression
@@ -141,9 +187,18 @@ choice if this conversion ever runs frequently.
 ## Development
 
 ```bash
-uv sync --all-extras   # install dev dependencies
-uv run pytest          # run the test suite
+uv sync           # installs the dev group, including pytest and duckdb
+uv run pytest
 ```
+
+`tests/test_smoke.py` runs the DuckDB query above against the converted Parquet file
+and writes the result to `tmp/tests/class_i_assays_by_mhc_restriction.csv`, so the
+output can be eyeballed as well as asserted on.
+
+It is a genuine end-to-end check rather than a unit test: the query uses the slugged
+names unquoted, and does arithmetic on the position columns, which only works if they
+were cast to integers rather than left as strings. The Parquet file is a build
+artifact, so the tests **skip** rather than fail when the conversion has not been run.
 
 ## License
 

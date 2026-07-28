@@ -10,3 +10,9 @@ dependencies = [
     "polars>=1.43.1",
     "rich>=15.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "duckdb>=1.5.5",
+    "pytest>=9.1.1",
+]

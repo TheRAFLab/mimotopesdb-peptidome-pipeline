@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import time
 
 import polars
@@ -39,6 +40,49 @@ CASTS = {
     "Assay - Quantitative measurement": polars.Float64,
     "Assay - Response Frequency (%)": polars.Float64,
 }
+
+
+def slugify(name: str) -> str:
+    """
+    Converts an IEDB column name into a slug that SQL can use unquoted.
+
+    The composed IEDB names contain spaces, hyphens, parentheses and a percent sign,
+    so they have to be quoted in every query that touches them. The slug is lower
+    snake case, which DuckDB and friends accept bare.
+
+    Args:
+        name (str): The composed column name, e.g. "Assay - Response Frequency (%)".
+
+    Returns:
+        str: The slug, e.g. "assay_response_frequency_percent".
+    """
+    # spelled out, so that "Response Frequency (%)" keeps its meaning
+    text = name.replace("%", "percent")
+
+    return re.sub(r"[^0-9a-zA-Z]+", "_", text).strip("_").lower()
+
+
+def slug_columns(lazy_frame: polars.LazyFrame) -> polars.LazyFrame:
+    """
+    Renames the columns of a lazy query to their slugs.
+
+    Args:
+        lazy_frame (polars.LazyFrame): The lazy query to rename.
+
+    Returns:
+        polars.LazyFrame: The query with slugged column names.
+
+    Raises:
+        ValueError: If two column names slug to the same string.
+    """
+    names = lazy_frame.collect_schema().names()
+    slugs = [slugify(name) for name in names]
+
+    if len(set(slugs)) != len(slugs):
+        duplicates = {slug for slug in slugs if slugs.count(slug) > 1}
+        raise ValueError(f"column names are not unique once slugged: {duplicates}")
+
+    return lazy_frame.rename(dict(zip(names, slugs)))
 
 
 def list_shards(file_path: str) -> list[str]:
@@ -127,6 +171,7 @@ def describe_columns(file_path: str) -> dict:
                 "group": group,
                 "field": field,
                 "name": name,
+                "slug": slugify(name),
                 "dtype": str(CASTS.get(name, polars.String)),
             }
         )
@@ -209,6 +254,7 @@ def scan_iedb_data(
     file_path: str,
     n_rows: int | None = None,
     cast: bool = True,
+    slugs: bool = True,
 ) -> polars.LazyFrame:
     """
     Builds a lazy query over the full set of sharded IEDB CSV files.
@@ -222,6 +268,8 @@ def scan_iedb_data(
         n_rows (int | None): Row limit per shard, for sampling during development.
         cast (bool): Whether to cast the numeric columns. Set to False to inspect
             the raw strings when a cast fails.
+        slugs (bool): Whether to rename the columns to their slugs. Set to False to
+            keep the composed IEDB names, which match the export's own header.
 
     Returns:
         polars.LazyFrame: A lazy query over every shard, concatenated in shard order.
@@ -241,7 +289,11 @@ def scan_iedb_data(
 
     combined = polars.concat(lazy_frames)
 
-    return cast_columns(combined) if cast else combined
+    # cast before renaming, because CASTS is keyed by the composed IEDB names
+    if cast:
+        combined = cast_columns(combined)
+
+    return slug_columns(combined) if slugs else combined
 
 
 def import_iedb_data(file_path: str, n_rows: int | None = None) -> polars.DataFrame:

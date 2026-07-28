@@ -6,6 +6,7 @@
       "group": "Assay ID",
       "field": "IEDB IRI",
       "name": "Assay ID - IEDB IRI",
+      "slug": "assay_id_iedb_iri",
       "dtype": "String"
     },
     {
@@ -13,6 +14,7 @@
       "group": "Reference",
       "field": "IEDB IRI",
       "name": "Reference - IEDB IRI",
+      "slug": "reference_iedb_iri",
       "dtype": "String"
     },
     {
@@ -20,6 +22,7 @@
       "group": "Reference",
       "field": "Type",
       "name": "Reference - Type",
+      "slug": "reference_type",
       "dtype": "String"
     },
     {
@@ -27,6 +30,7 @@
       "group": "Reference",
       "field": "PMID",
       "name": "Reference - PMID",
+      "slug": "reference_pmid",
       "dtype": "Int32"
     },
     {
@@ -34,6 +38,7 @@
       "group": "Reference",
       "field": "Submission ID",
       "name": "Reference - Submission ID",
+      "slug": "reference_submission_id",
       "dtype": "Int32"
     },
     {
@@ -41,6 +46,7 @@
       "group": "Reference",
       "field": "Authors",
       "name": "Reference - Authors",
+      "slug": "reference_authors",
       "dtype": "String"
     },
     {
@@ -48,6 +54,7 @@
       "group": "Reference",
       "field": "Journal",
       "name": "Reference - Journal",
+      "slug": "reference_journal",
       "dtype": "String"
     },
     {
@@ -55,6 +62,7 @@
       "group": "Reference",
       "field": "Date",
       "name": "Reference - Date",
+      "slug": "reference_date",
       "dtype": "Int16"
     },
     {
@@ -62,6 +70,7 @@
       "group": "Reference",
       "field": "Title",
       "name": "Reference - Title",
+      "slug": "reference_title",
       "dtype": "String"
     },
     {
@@ -69,6 +78,7 @@
       "group": "Epitope",
       "field": "Epitope IRI",
       "name": "Epitope - Epitope IRI",
+      "slug": "epitope_epitope_iri",
       "dtype": "String"
     },
     {
@@ -76,6 +86,7 @@
       "group": "Epitope",
       "field": "Object Type",
       "name": "Epitope - Object Type",
+      "slug": "epitope_object_type",
       "dtype": "String"
     },
     {
@@ -83,6 +94,7 @@
       "group": "Epitope",
       "field": "Name",
       "name": "Epitope - Name",
+      "slug": "epitope_name",
       "dtype": "String"
     },
     {
@@ -90,6 +102,7 @@
       "group": "Epitope",
       "field": "Reference Name",
       "name": "Epitope - Reference Name",
+      "slug": "epitope_reference_name",
       "dtype": "String"
     },
     {
@@ -97,6 +110,7 @@
       "group": "Epitope",
       "field": "Modified residues",
       "name": "Epitope - Modified residues",
+      "slug": "epitope_modified_residues",
       "dtype": "String"
     },
     {
@@ -104,6 +118,7 @@
       "group": "Epitope",
       "field": "Modifications",
       "name": "Epitope - Modifications",
+      "slug": "epitope_modifications",
       "dtype": "String"
     },
     {
@@ -111,6 +126,7 @@
       "group": "Epitope",
       "field": "Starting Position",
       "name": "Epitope - Starting Position",
+      "slug": "epitope_starting_position",
       "dtype": "Int32"
     },
     {
@@ -118,6 +134,7 @@
       "group": "Epitope",
       "field": "Ending Position",
       "name": "Epitope - Ending Position",
+      "slug": "epitope_ending_position",
       "dtype": "Int32"
     },
     {
@@ -125,6 +142,7 @@
       "group": "Epitope",
       "field": "IRI",
       "name": "Epitope - IRI",
+      "slug": "epitope_iri",
       "dtype": "String"
     },
     {
@@ -132,6 +150,7 @@
       "group": "Epitope",
       "field": "Synonyms",
       "name": "Epitope - Synonyms",
+      "slug": "epitope_synonyms",
       "dtype": "String"
     },
     {
@@ -139,6 +158,7 @@
       "group": "Epitope",
       "field": "Source Molecule",
       "name": "Epitope - Source Molecule",
+      "slug": "epitope_source_molecule",
       "dtype": "String"
     },
     {
@@ -146,6 +166,7 @@
       "group": "Epitope",
       "field": "Source Molecule IRI",
       "name": "Epitope - Source Molecule IRI",
+      "slug": "epitope_source_molecule_iri",
       "dtype": "String"
     },
     {
@@ -153,6 +174,7 @@
       "group": "Epitope",
       "field": "Molecule Parent",
       "name": "Epitope - Molecule Parent",
+      "slug": "epitope_molecule_parent",
       "dtype": "String"
     },
     {
@@ -160,6 +182,7 @@
       "group": "Epitope",
       "field": "Molecule Parent IRI",
       "name": "Epitope - Molecule Parent IRI",
+      "slug": "epitope_molecule_parent_iri",
       "dtype": "String"
     },
     {
@@ -167,6 +190,7 @@
       "group": "Epitope",
       "field": "Source Organism",
       "name": "Epitope - Source Organism",
+      "slug": "epitope_source_organism",
       "dtype": "String"
     },
     {
@@ -174,6 +198,7 @@
       "group": "Epitope",
       "field": "Source Organism IRI",
       "name": "Epitope - Source Organism IRI",
+      "slug": "epitope_source_organism_iri",
       "dtype": "String"
     },
     {
@@ -181,6 +206,7 @@
       "group": "Epitope",
       "field": "Species",
       "name": "Epitope - Species",
+      "slug": "epitope_species",
       "dtype": "String"
     },
     {
@@ -188,6 +214,7 @@
       "group": "Epitope",
       "field": "Species IRI",
       "name": "Epitope - Species IRI",
+      "slug": "epitope_species_iri",
       "dtype": "String"
     },
     {
@@ -195,6 +222,7 @@
       "group": "Epitope",
       "field": "Comments",
       "name": "Epitope - Comments",
+      "slug": "epitope_comments",
       "dtype": "String"
     },
     {
@@ -202,6 +230,7 @@
       "group": "Related Object",
       "field": "Epitope Relation",
       "name": "Related Object - Epitope Relation",
+      "slug": "related_object_epitope_relation",
       "dtype": "String"
     },
     {
@@ -209,6 +238,7 @@
       "group": "Related Object",
       "field": "Object Type",
       "name": "Related Object - Object Type",
+      "slug": "related_object_object_type",
       "dtype": "String"
     },
     {
@@ -216,6 +246,7 @@
       "group": "Related Object",
       "field": "Name",
       "name": "Related Object - Name",
+      "slug": "related_object_name",
       "dtype": "String"
     },
     {
@@ -223,6 +254,7 @@
       "group": "Related Object",
       "field": "Starting Position",
       "name": "Related Object - Starting Position",
+      "slug": "related_object_starting_position",
       "dtype": "Int32"
     },
     {
@@ -230,6 +262,7 @@
       "group": "Related Object",
       "field": "Ending Position",
       "name": "Related Object - Ending Position",
+      "slug": "related_object_ending_position",
       "dtype": "Int32"
     },
     {
@@ -237,6 +270,7 @@
       "group": "Related Object",
       "field": "IRI",
       "name": "Related Object - IRI",
+      "slug": "related_object_iri",
       "dtype": "String"
     },
     {
@@ -244,6 +278,7 @@
       "group": "Related Object",
       "field": "Synonyms",
       "name": "Related Object - Synonyms",
+      "slug": "related_object_synonyms",
       "dtype": "String"
     },
     {
@@ -251,6 +286,7 @@
       "group": "Related Object",
       "field": "Source Molecule",
       "name": "Related Object - Source Molecule",
+      "slug": "related_object_source_molecule",
       "dtype": "String"
     },
     {
@@ -258,6 +294,7 @@
       "group": "Related Object",
       "field": "Source Molecule IRI",
       "name": "Related Object - Source Molecule IRI",
+      "slug": "related_object_source_molecule_iri",
       "dtype": "String"
     },
     {
@@ -265,6 +302,7 @@
       "group": "Related Object",
       "field": "Molecule Parent",
       "name": "Related Object - Molecule Parent",
+      "slug": "related_object_molecule_parent",
       "dtype": "String"
     },
     {
@@ -272,6 +310,7 @@
       "group": "Related Object",
       "field": "Molecule Parent IRI",
       "name": "Related Object - Molecule Parent IRI",
+      "slug": "related_object_molecule_parent_iri",
       "dtype": "String"
     },
     {
@@ -279,6 +318,7 @@
       "group": "Related Object",
       "field": "Source Organism",
       "name": "Related Object - Source Organism",
+      "slug": "related_object_source_organism",
       "dtype": "String"
     },
     {
@@ -286,6 +326,7 @@
       "group": "Related Object",
       "field": "Source Organism IRI",
       "name": "Related Object - Source Organism IRI",
+      "slug": "related_object_source_organism_iri",
       "dtype": "String"
     },
     {
@@ -293,6 +334,7 @@
       "group": "Related Object",
       "field": "Species",
       "name": "Related Object - Species",
+      "slug": "related_object_species",
       "dtype": "String"
     },
     {
@@ -300,6 +342,7 @@
       "group": "Related Object",
       "field": "Species IRI",
       "name": "Related Object - Species IRI",
+      "slug": "related_object_species_iri",
       "dtype": "String"
     },
     {
@@ -307,6 +350,7 @@
       "group": "Host",
       "field": "Name",
       "name": "Host - Name",
+      "slug": "host_name",
       "dtype": "String"
     },
     {
@@ -314,6 +358,7 @@
       "group": "Host",
       "field": "IRI",
       "name": "Host - IRI",
+      "slug": "host_iri",
       "dtype": "String"
     },
     {
@@ -321,6 +366,7 @@
       "group": "Host",
       "field": "Geolocation",
       "name": "Host - Geolocation",
+      "slug": "host_geolocation",
       "dtype": "String"
     },
     {
@@ -328,6 +374,7 @@
       "group": "Host",
       "field": "Geolocation IRI",
       "name": "Host - Geolocation IRI",
+      "slug": "host_geolocation_iri",
       "dtype": "String"
     },
     {
@@ -335,6 +382,7 @@
       "group": "Host",
       "field": "Sex",
       "name": "Host - Sex",
+      "slug": "host_sex",
       "dtype": "String"
     },
     {
@@ -342,6 +390,7 @@
       "group": "Host",
       "field": "Age",
       "name": "Host - Age",
+      "slug": "host_age",
       "dtype": "String"
     },
     {
@@ -349,6 +398,7 @@
       "group": "Host",
       "field": "MHC Types Present",
       "name": "Host - MHC Types Present",
+      "slug": "host_mhc_types_present",
       "dtype": "String"
     },
     {
@@ -356,6 +406,7 @@
       "group": "in vivo Process",
       "field": "Process Type",
       "name": "in vivo Process - Process Type",
+      "slug": "in_vivo_process_process_type",
       "dtype": "String"
     },
     {
@@ -363,6 +414,7 @@
       "group": "in vivo Process",
       "field": "Disease",
       "name": "in vivo Process - Disease",
+      "slug": "in_vivo_process_disease",
       "dtype": "String"
     },
     {
@@ -370,6 +422,7 @@
       "group": "in vivo Process",
       "field": "Disease IRI",
       "name": "in vivo Process - Disease IRI",
+      "slug": "in_vivo_process_disease_iri",
       "dtype": "String"
     },
     {
@@ -377,6 +430,7 @@
       "group": "in vivo Process",
       "field": "Disease Stage",
       "name": "in vivo Process - Disease Stage",
+      "slug": "in_vivo_process_disease_stage",
       "dtype": "String"
     },
     {
@@ -384,6 +438,7 @@
       "group": "in vivo Antigen",
       "field": "Epitope Relation",
       "name": "in vivo Antigen - Epitope Relation",
+      "slug": "in_vivo_antigen_epitope_relation",
       "dtype": "String"
     },
     {
@@ -391,6 +446,7 @@
       "group": "in vivo Antigen",
       "field": "Object Type",
       "name": "in vivo Antigen - Object Type",
+      "slug": "in_vivo_antigen_object_type",
       "dtype": "String"
     },
     {
@@ -398,6 +454,7 @@
       "group": "in vivo Antigen",
       "field": "Name",
       "name": "in vivo Antigen - Name",
+      "slug": "in_vivo_antigen_name",
       "dtype": "String"
     },
     {
@@ -405,6 +462,7 @@
       "group": "in vivo Antigen",
       "field": "Reference Name",
       "name": "in vivo Antigen - Reference Name",
+      "slug": "in_vivo_antigen_reference_name",
       "dtype": "String"
     },
     {
@@ -412,6 +470,7 @@
       "group": "in vivo Antigen",
       "field": "Starting Position",
       "name": "in vivo Antigen - Starting Position",
+      "slug": "in_vivo_antigen_starting_position",
       "dtype": "Int32"
     },
     {
@@ -419,6 +478,7 @@
       "group": "in vivo Antigen",
       "field": "Ending Position",
       "name": "in vivo Antigen - Ending Position",
+      "slug": "in_vivo_antigen_ending_position",
       "dtype": "Int32"
     },
     {
@@ -426,6 +486,7 @@
       "group": "in vivo Antigen",
       "field": "IRI",
       "name": "in vivo Antigen - IRI",
+      "slug": "in_vivo_antigen_iri",
       "dtype": "String"
     },
     {
@@ -433,6 +494,7 @@
       "group": "in vivo Antigen",
       "field": "Source Molecule",
       "name": "in vivo Antigen - Source Molecule",
+      "slug": "in_vivo_antigen_source_molecule",
       "dtype": "String"
     },
     {
@@ -440,6 +502,7 @@
       "group": "in vivo Antigen",
       "field": "Source Molecule IRI",
       "name": "in vivo Antigen - Source Molecule IRI",
+      "slug": "in_vivo_antigen_source_molecule_iri",
       "dtype": "String"
     },
     {
@@ -447,6 +510,7 @@
       "group": "in vivo Antigen",
       "field": "Molecule Parent",
       "name": "in vivo Antigen - Molecule Parent",
+      "slug": "in_vivo_antigen_molecule_parent",
       "dtype": "String"
     },
     {
@@ -454,6 +518,7 @@
       "group": "in vivo Antigen",
       "field": "Molecule Parent IRI",
       "name": "in vivo Antigen - Molecule Parent IRI",
+      "slug": "in_vivo_antigen_molecule_parent_iri",
       "dtype": "String"
     },
     {
@@ -461,6 +526,7 @@
       "group": "in vivo Antigen",
       "field": "Source Organism",
       "name": "in vivo Antigen - Source Organism",
+      "slug": "in_vivo_antigen_source_organism",
       "dtype": "String"
     },
     {
@@ -468,6 +534,7 @@
       "group": "in vivo Antigen",
       "field": "Source Organism IRI",
       "name": "in vivo Antigen - Source Organism IRI",
+      "slug": "in_vivo_antigen_source_organism_iri",
       "dtype": "String"
     },
     {
@@ -475,6 +542,7 @@
       "group": "in vivo Antigen",
       "field": "Species",
       "name": "in vivo Antigen - Species",
+      "slug": "in_vivo_antigen_species",
       "dtype": "String"
     },
     {
@@ -482,6 +550,7 @@
       "group": "in vivo Antigen",
       "field": "Species IRI",
       "name": "in vivo Antigen - Species IRI",
+      "slug": "in_vivo_antigen_species_iri",
       "dtype": "String"
     },
     {
@@ -489,6 +558,7 @@
       "group": "in vivo Antigen",
       "field": "Adjuvants",
       "name": "in vivo Antigen - Adjuvants",
+      "slug": "in_vivo_antigen_adjuvants",
       "dtype": "String"
     },
     {
@@ -496,6 +566,7 @@
       "group": "in vivo Antigen",
       "field": "Route",
       "name": "in vivo Antigen - Route",
+      "slug": "in_vivo_antigen_route",
       "dtype": "String"
     },
     {
@@ -503,6 +574,7 @@
       "group": "in vivo Antigen",
       "field": "Dose Schedule",
       "name": "in vivo Antigen - Dose Schedule",
+      "slug": "in_vivo_antigen_dose_schedule",
       "dtype": "String"
     },
     {
@@ -510,6 +582,7 @@
       "group": "In vitro Process",
       "field": "Process Type",
       "name": "In vitro Process - Process Type",
+      "slug": "in_vitro_process_process_type",
       "dtype": "String"
     },
     {
@@ -517,6 +590,7 @@
       "group": "In vitro Process",
       "field": "Epitope Relation",
       "name": "In vitro Process - Epitope Relation",
+      "slug": "in_vitro_process_epitope_relation",
       "dtype": "String"
     },
     {
@@ -524,6 +598,7 @@
       "group": "In vitro Process",
       "field": "Object Type",
       "name": "In vitro Process - Object Type",
+      "slug": "in_vitro_process_object_type",
       "dtype": "String"
     },
     {
@@ -531,6 +606,7 @@
       "group": "In vitro Process",
       "field": "Name",
       "name": "In vitro Process - Name",
+      "slug": "in_vitro_process_name",
       "dtype": "String"
     },
     {
@@ -538,6 +614,7 @@
       "group": "In vitro Process",
       "field": "Reference Name",
       "name": "In vitro Process - Reference Name",
+      "slug": "in_vitro_process_reference_name",
       "dtype": "String"
     },
     {
@@ -545,6 +622,7 @@
       "group": "In vitro Process",
       "field": "Starting Position",
       "name": "In vitro Process - Starting Position",
+      "slug": "in_vitro_process_starting_position",
       "dtype": "Int32"
     },
     {
@@ -552,6 +630,7 @@
       "group": "In vitro Process",
       "field": "Ending Position",
       "name": "In vitro Process - Ending Position",
+      "slug": "in_vitro_process_ending_position",
       "dtype": "Int32"
     },
     {
@@ -559,6 +638,7 @@
       "group": "In vitro Process",
       "field": "IRI",
       "name": "In vitro Process - IRI",
+      "slug": "in_vitro_process_iri",
       "dtype": "String"
     },
     {
@@ -566,6 +646,7 @@
       "group": "In vitro Process",
       "field": "Source Molecule",
       "name": "In vitro Process - Source Molecule",
+      "slug": "in_vitro_process_source_molecule",
       "dtype": "String"
     },
     {
@@ -573,6 +654,7 @@
       "group": "In vitro Process",
       "field": "Source Molecule IRI",
       "name": "In vitro Process - Source Molecule IRI",
+      "slug": "in_vitro_process_source_molecule_iri",
       "dtype": "String"
     },
     {
@@ -580,6 +662,7 @@
       "group": "In vitro Process",
       "field": "Molecule Parent",
       "name": "In vitro Process - Molecule Parent",
+      "slug": "in_vitro_process_molecule_parent",
       "dtype": "String"
     },
     {
@@ -587,6 +670,7 @@
       "group": "In vitro Process",
       "field": "Molecule Parent IRI",
       "name": "In vitro Process - Molecule Parent IRI",
+      "slug": "in_vitro_process_molecule_parent_iri",
       "dtype": "String"
     },
     {
@@ -594,6 +678,7 @@
       "group": "In vitro Process",
       "field": "Source Organism",
       "name": "In vitro Process - Source Organism",
+      "slug": "in_vitro_process_source_organism",
       "dtype": "String"
     },
     {
@@ -601,6 +686,7 @@
       "group": "In vitro Process",
       "field": "Source Organism IRI",
       "name": "In vitro Process - Source Organism IRI",
+      "slug": "in_vitro_process_source_organism_iri",
       "dtype": "String"
     },
     {
@@ -608,6 +694,7 @@
       "group": "In vitro Process",
       "field": "Species",
       "name": "In vitro Process - Species",
+      "slug": "in_vitro_process_species",
       "dtype": "String"
     },
     {
@@ -615,6 +702,7 @@
       "group": "In vitro Process",
       "field": "Species IRI",
       "name": "In vitro Process - Species IRI",
+      "slug": "in_vitro_process_species_iri",
       "dtype": "String"
     },
     {
@@ -622,6 +710,7 @@
       "group": "Antigen Processing",
       "field": "Comments",
       "name": "Antigen Processing - Comments",
+      "slug": "antigen_processing_comments",
       "dtype": "String"
     },
     {
@@ -629,6 +718,7 @@
       "group": "Assay",
       "field": "Location of Assay Data in Reference",
       "name": "Assay - Location of Assay Data in Reference",
+      "slug": "assay_location_of_assay_data_in_reference",
       "dtype": "String"
     },
     {
@@ -636,6 +726,7 @@
       "group": "Assay",
       "field": "Method",
       "name": "Assay - Method",
+      "slug": "assay_method",
       "dtype": "String"
     },
     {
@@ -643,6 +734,7 @@
       "group": "Assay",
       "field": "Response measured",
       "name": "Assay - Response measured",
+      "slug": "assay_response_measured",
       "dtype": "String"
     },
     {
@@ -650,6 +742,7 @@
       "group": "Assay",
       "field": "Units",
       "name": "Assay - Units",
+      "slug": "assay_units",
       "dtype": "String"
     },
     {
@@ -657,6 +750,7 @@
       "group": "Assay",
       "field": "IRI",
       "name": "Assay - IRI",
+      "slug": "assay_iri",
       "dtype": "String"
     },
     {
@@ -664,6 +758,7 @@
       "group": "Assay",
       "field": "Qualitative Measurement",
       "name": "Assay - Qualitative Measurement",
+      "slug": "assay_qualitative_measurement",
       "dtype": "String"
     },
     {
@@ -671,6 +766,7 @@
       "group": "Assay",
       "field": "Measurement Inequality",
       "name": "Assay - Measurement Inequality",
+      "slug": "assay_measurement_inequality",
       "dtype": "String"
     },
     {
@@ -678,6 +774,7 @@
       "group": "Assay",
       "field": "Quantitative measurement",
       "name": "Assay - Quantitative measurement",
+      "slug": "assay_quantitative_measurement",
       "dtype": "Float64"
     },
     {
@@ -685,6 +782,7 @@
       "group": "Assay",
       "field": "Number of Subjects Tested",
       "name": "Assay - Number of Subjects Tested",
+      "slug": "assay_number_of_subjects_tested",
       "dtype": "Int32"
     },
     {
@@ -692,6 +790,7 @@
       "group": "Assay",
       "field": "Number of Subjects Responded",
       "name": "Assay - Number of Subjects Responded",
+      "slug": "assay_number_of_subjects_responded",
       "dtype": "Int32"
     },
     {
@@ -699,6 +798,7 @@
       "group": "Assay",
       "field": "Response Frequency (%)",
       "name": "Assay - Response Frequency (%)",
+      "slug": "assay_response_frequency_percent",
       "dtype": "Float64"
     },
     {
@@ -706,6 +806,7 @@
       "group": "Assay",
       "field": "PDB ID",
       "name": "Assay - PDB ID",
+      "slug": "assay_pdb_id",
       "dtype": "String"
     },
     {
@@ -713,6 +814,7 @@
       "group": "Assay",
       "field": "Comments",
       "name": "Assay - Comments",
+      "slug": "assay_comments",
       "dtype": "String"
     },
     {
@@ -720,6 +822,7 @@
       "group": "Antigen Presenting Cell",
       "field": "Source Tissue",
       "name": "Antigen Presenting Cell - Source Tissue",
+      "slug": "antigen_presenting_cell_source_tissue",
       "dtype": "String"
     },
     {
@@ -727,6 +830,7 @@
       "group": "Antigen Presenting Cell",
       "field": "Source Tissue IRI",
       "name": "Antigen Presenting Cell - Source Tissue IRI",
+      "slug": "antigen_presenting_cell_source_tissue_iri",
       "dtype": "String"
     },
     {
@@ -734,6 +838,7 @@
       "group": "Antigen Presenting Cell",
       "field": "Name",
       "name": "Antigen Presenting Cell - Name",
+      "slug": "antigen_presenting_cell_name",
       "dtype": "String"
     },
     {
@@ -741,6 +846,7 @@
       "group": "Antigen Presenting Cell",
       "field": "IRI",
       "name": "Antigen Presenting Cell - IRI",
+      "slug": "antigen_presenting_cell_iri",
       "dtype": "String"
     },
     {
@@ -748,6 +854,7 @@
       "group": "Antigen Presenting Cell",
       "field": "Culture Condition",
       "name": "Antigen Presenting Cell - Culture Condition",
+      "slug": "antigen_presenting_cell_culture_condition",
       "dtype": "String"
     },
     {
@@ -755,6 +862,7 @@
       "group": "MHC Restriction",
       "field": "Name",
       "name": "MHC Restriction - Name",
+      "slug": "mhc_restriction_name",
       "dtype": "String"
     },
     {
@@ -762,6 +870,7 @@
       "group": "MHC Restriction",
       "field": "IRI",
       "name": "MHC Restriction - IRI",
+      "slug": "mhc_restriction_iri",
       "dtype": "String"
     },
     {
@@ -769,6 +878,7 @@
       "group": "MHC Restriction",
       "field": "Evidence Code",
       "name": "MHC Restriction - Evidence Code",
+      "slug": "mhc_restriction_evidence_code",
       "dtype": "String"
     },
     {
@@ -776,6 +886,7 @@
       "group": "MHC Restriction",
       "field": "Evidence IRI",
       "name": "MHC Restriction - Evidence IRI",
+      "slug": "mhc_restriction_evidence_iri",
       "dtype": "String"
     },
     {
@@ -783,6 +894,7 @@
       "group": "MHC Restriction",
       "field": "Class",
       "name": "MHC Restriction - Class",
+      "slug": "mhc_restriction_class",
       "dtype": "String"
     }
   ]
