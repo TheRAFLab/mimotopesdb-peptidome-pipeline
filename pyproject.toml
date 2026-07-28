@@ -1,18 +1,42 @@
 [project]
 name = "mimotopesdb-peptidome-pipeline"
 version = "0.1.0"
-description = "Add your description here"
+description = "Converts the sharded IEDB MHC ligand export into a single typed Parquet file"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.14"
+authors = [
+    { name = "Chris Thorpe", email = "33100149+drchristhorpe@users.noreply.github.com" },
+]
+keywords = [
+    "bioinformatics",
+    "immunology",
+    "iedb",
+    "mhc",
+    "peptidome",
+    "epitope",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
 dependencies = [
     "polars>=1.43.1",
     "rich>=15.0.0",
 ]
+
+[project.urls]
+Repository = "https://github.com/TheRAFLab/mimotopesdb-peptidome-pipeline"
+Issues = "https://github.com/TheRAFLab/mimotopesdb-peptidome-pipeline/issues"
 
 [dependency-groups]
 dev = [
     "duckdb>=1.5.5",
     "pytest>=9.1.1",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
