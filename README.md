@@ -24,7 +24,7 @@ two shards disagree, then the genuinely numeric columns are cast once at the end
 
 Those composed names are readable but awkward to query, so the Parquet file uses
 lower snake case **slugs** instead — `Reference - PMID` becomes `reference_pmid`.
-The mapping between the two lives in `iedb/columns.json`.
+The mapping between the two lives in `iedb/columns/iedb_mhc_ligand_full.json`.
 
 ## Requirements
 
@@ -59,13 +59,13 @@ control.
 uv run iedb-import
 ```
 
-This writes `tmp/iedb_parquet/mhc_ligand_full.parquet` and refreshes
-`iedb/columns.json`, reporting progress as it goes:
+This writes `tmp/iedb_parquet/iedb_mhc_ligand_full.parquet` and refreshes
+`iedb/columns/iedb_mhc_ligand_full.json`, reporting progress as it goes:
 
 ```
 ──────────────────── IEDB peptidome import ─────────────────────
   Found 10 shards, 9.1 GB in tmp/iedb_data
-  Wrote 112 column definitions (15 cast) to iedb/columns.json
+  Wrote 112 column definitions (15 cast) to iedb/columns/iedb_mhc_ligand_full.json
 
    Rows              5,749,672
    Columns                 112
@@ -75,13 +75,76 @@ This writes `tmp/iedb_parquet/mhc_ligand_full.parquet` and refreshes
    Elapsed              21.6 s
 ```
 
-All three paths can be overridden:
+It then builds the minimal epitope table as a second stage. Paths can be overridden,
+and `--skip-minimal` stops after the conversion:
 
 ```bash
-uv run iedb-import --input /data/iedb --parquet /data/mhc_ligand_full.parquet
+uv run iedb-import --input /data/iedb --parquet /data/iedb_mhc_ligand_full.parquet
 ```
 
 See `uv run iedb-import --help` for the full list.
+
+## The minimal epitope table
+
+`tmp/iedb_parquet/iedb_mhc_ligand_minimal.parquet` is a 52.9 MB reduction of the
+full export, built for fast sequence matching. It can be rebuilt on its own in about
+6 seconds, without redoing the conversion:
+
+```bash
+uv run iedb-minimal
+```
+
+One row per sequence, IEDB epitope ID and MHC restriction — 3,083,883 rows covering
+1,594,878 distinct sequences.
+
+| Column | Notes |
+| ------ | ----- |
+| `sequence` | residues only, modifications and hybrid-junction spaces stripped |
+| `peptide_length` | |
+| `iedb_epitope_id` | one sequence can carry several; `GILGFVFTL` has 12 |
+| `mhc_allele`, `mhc_class` | |
+| `allele_is_specific` | false for class-level restrictions like `HLA class I` |
+| `uniprot_id` | 79.6% of rows |
+| `source_molecule` | most commonly reported name for the group |
+| `start_position`, `end_position` | the modal pair, not the extremes — see below |
+| `pmids`, `n_pmids` | every publication behind the group |
+| `is_modified`, `modifications`, `modified_residues` | |
+| `n_assays` | rows in the export behind this one |
+
+Rows are sorted by sequence, so a lookup skips most row groups on their statistics.
+An exact lookup takes around 20 ms and a Levenshtein sweep over all 9-mers around
+0.3 s:
+
+```sql
+SELECT sequence, mhc_allele, uniprot_id, source_molecule
+FROM read_parquet('tmp/iedb_parquet/iedb_mhc_ligand_minimal.parquet')
+WHERE peptide_length = 9
+  AND damerau_levenshtein(sequence, 'GILGFVFTL') <= 2;
+```
+
+### Three things to know about the data
+
+**Positions are modal, not extremes.** Submissions disagree about where an epitope
+sits, and taking the lowest start with the highest end describes a peptide that does
+not exist: titin's `ESDPIVAQY` comes out as 23410-24345, a 935 residue span for a
+nine residue peptide. The most frequently reported start and end are taken together
+as a pair, giving 24337-24345. A test asserts every known epitope's span equals its
+length.
+
+**Sequences need cleaning before they match.** The export appends modifications to
+the epitope name — `LQPFPQPQLPY + DEAM(Q8)` — and writes hybrid peptide fusion
+junctions as a space, as in `TEGVEALYLVC KGGS`. Both are stripped out of `sequence`.
+The modification is preserved in its own columns with an `is_modified` flag, since
+otherwise a modified and an unmodified entry become indistinguishable. The junction is
+not: exactly one row of the July 2026 export is gapped, an H2-IAg7-restricted hybrid
+insulin peptide, which does not warrant a column across three million rows.
+
+**Engineered analogues have no provenance.** `ELAGIGILTV` (MART-1 A27L) and
+`SLLMWITQV` (NY-ESO-1 C165V) are synthetic variants, so IEDB records no source
+protein, UniProt ID or position for them. The nulls are correct rather than missing.
+
+Non-peptidic and discontinuous epitopes — 771 rows of glycolipids and small molecules
+whose names are chemistry rather than residues — are excluded.
 
 ### As a library
 
@@ -112,7 +175,7 @@ The slugs need no quoting, so the Parquet file can be queried directly:
 SELECT mhc_restriction_name,
        count(*) AS assays,
        round(avg(epitope_ending_position - epitope_starting_position + 1), 1) AS mean_len
-FROM read_parquet('tmp/iedb_parquet/mhc_ligand_full.parquet')
+FROM read_parquet('tmp/iedb_parquet/iedb_mhc_ligand_full.parquet')
 WHERE mhc_restriction_class = 'I'
   AND reference_date >= 2020
 GROUP BY 1
@@ -138,11 +201,14 @@ Use `import_iedb_data(path, n_rows=10)` to pull a small sample into memory. Note
 
 | Path | Contents |
 | ---- | -------- |
-| `tmp/iedb_parquet/mhc_ligand_full.parquet` | 5,749,672 rows x 112 columns |
-| `iedb/columns.json` | Every column's index, group, field, name, slug and dtype |
+| `tmp/iedb_parquet/iedb_mhc_ligand_full.parquet` | 5,749,672 rows x 112 columns |
+| `tmp/iedb_parquet/iedb_mhc_ligand_minimal.parquet` | 3,083,883 rows x 16 columns, for matching |
+| `iedb/columns/iedb_mhc_ligand_full.json` | Every column's index, group, field, name, slug and dtype |
+| `iedb/columns/iedb_mhc_ligand_minimal.json` | Each minimal column's dtype, meaning and source |
 
-`columns.json` is committed as a reference for picking columns, and because it diffs
-readably when a future IEDB export changes shape. Each entry looks like:
+Both files under `iedb/columns/` are named after the Parquet file they describe, and
+are committed as a reference for picking columns and because they diff readably when
+a future IEDB export changes shape. An entry in the full file looks like:
 
 ```json
 {
@@ -159,6 +225,20 @@ readably when a future IEDB export changes shape. Each entry looks like:
 came from, and `group` plus `field` are the two header rows that compose it. `field`
 alone is not unique — `IEDB IRI`, `Name` and `Starting Position` all recur across
 groups — which is why the names are composed in the first place.
+
+The minimal file records what each column means and where it came from, with the
+dtype read off the built table rather than declared, so it cannot claim a type the
+file does not have:
+
+```json
+{
+  "index": 6,
+  "name": "uniprot_id",
+  "dtype": "String",
+  "description": "UniProt accession of the source protein, where IEDB records one",
+  "source": "epitope_molecule_parent_iri, falling back to epitope_source_molecule_iri"
+}
+```
 
 ### Dtypes
 
@@ -199,14 +279,23 @@ uv sync           # installs the dev group, including pytest and duckdb
 uv run pytest
 ```
 
-`tests/test_smoke.py` runs the DuckDB query above against the converted Parquet file
-and writes the result to `tmp/tests/class_i_assays_by_mhc_restriction.csv`, so the
-output can be eyeballed as well as asserted on.
+Both test modules write their results to `tmp/tests/` as CSV, so the output can be
+eyeballed as well as asserted on:
 
-It is a genuine end-to-end check rather than a unit test: the query uses the slugged
-names unquoted, and does arithmetic on the position columns, which only works if they
-were cast to integers rather than left as strings. The Parquet file is a build
-artifact, so the tests **skip** rather than fail when the conversion has not been run.
+| Test module | Checks | Writes |
+| ----------- | ------ | ------ |
+| `tests/test_smoke.py` | The DuckDB query above against the converted export | `class_i_assays_by_mhc_restriction.csv` |
+| `tests/test_minimal_table.py` | Well characterised epitopes keep the right protein and position | `known_epitopes.csv` |
+
+These are end-to-end checks rather than unit tests. The first uses the slugged names
+unquoted and does arithmetic on the position columns, which only works if they were
+cast to integers rather than left as strings. The second pins epitopes such as
+`GILGFVFTL` to P03485 at 58-66, which are facts about the biology rather than about
+this export, so a failure means the extraction has drifted rather than that IEDB has
+published more data.
+
+The Parquet files are build artifacts, so the tests **skip** rather than fail when
+the pipeline has not been run.
 
 ## License
 

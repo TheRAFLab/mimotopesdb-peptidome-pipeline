@@ -1,0 +1,117 @@
+{
+  "column_count": 16,
+  "columns": [
+    {
+      "index": 0,
+      "name": "sequence",
+      "dtype": "String",
+      "description": "Epitope residues, upper case, with no modification suffix or hybrid junction",
+      "source": "epitope_name"
+    },
+    {
+      "index": 1,
+      "name": "peptide_length",
+      "dtype": "Int16",
+      "description": "Number of residues in the sequence",
+      "source": "derived from sequence"
+    },
+    {
+      "index": 2,
+      "name": "iedb_epitope_id",
+      "dtype": "Int32",
+      "description": "IEDB epitope accession; one sequence can carry several",
+      "source": "epitope_epitope_iri"
+    },
+    {
+      "index": 3,
+      "name": "mhc_allele",
+      "dtype": "String",
+      "description": "MHC restriction as reported, which may be an allele or a class",
+      "source": "mhc_restriction_name"
+    },
+    {
+      "index": 4,
+      "name": "mhc_class",
+      "dtype": "String",
+      "description": "MHC class, I or II",
+      "source": "mhc_restriction_class"
+    },
+    {
+      "index": 5,
+      "name": "allele_is_specific",
+      "dtype": "Boolean",
+      "description": "Whether mhc_allele names an allele rather than a class such as 'HLA class I'",
+      "source": "derived from mhc_allele"
+    },
+    {
+      "index": 6,
+      "name": "uniprot_id",
+      "dtype": "String",
+      "description": "UniProt accession of the source protein, where IEDB records one",
+      "source": "epitope_molecule_parent_iri, falling back to epitope_source_molecule_iri"
+    },
+    {
+      "index": 7,
+      "name": "source_molecule",
+      "dtype": "String",
+      "description": "Name of the originating protein, as most commonly reported for the group",
+      "source": "epitope_source_molecule"
+    },
+    {
+      "index": 8,
+      "name": "start_position",
+      "dtype": "Int32",
+      "description": "Start of the epitope in the source protein, most commonly reported value",
+      "source": "epitope_starting_position"
+    },
+    {
+      "index": 9,
+      "name": "end_position",
+      "dtype": "Int32",
+      "description": "End of the epitope in the source protein, paired with start_position",
+      "source": "epitope_ending_position"
+    },
+    {
+      "index": 10,
+      "name": "pmids",
+      "dtype": "List(Int32)",
+      "description": "PubMed IDs of every publication behind the group",
+      "source": "reference_pmid"
+    },
+    {
+      "index": 11,
+      "name": "n_pmids",
+      "dtype": "Int32",
+      "description": "Number of distinct publications behind the group",
+      "source": "derived from pmids"
+    },
+    {
+      "index": 12,
+      "name": "is_modified",
+      "dtype": "Boolean",
+      "description": "Whether any assay in the group reported a post-translational modification",
+      "source": "derived from modifications"
+    },
+    {
+      "index": 13,
+      "name": "modifications",
+      "dtype": "List(String)",
+      "description": "Modifications reported for the group, such as Oxidation or Deamidation",
+      "source": "epitope_modifications"
+    },
+    {
+      "index": 14,
+      "name": "modified_residues",
+      "dtype": "List(String)",
+      "description": "Residues carrying those modifications, such as M22",
+      "source": "epitope_modified_residues"
+    },
+    {
+      "index": 15,
+      "name": "n_assays",
+      "dtype": "UInt32",
+      "description": "Number of rows in the full export behind this one",
+      "source": "row count"
+    }
+  ]
+}

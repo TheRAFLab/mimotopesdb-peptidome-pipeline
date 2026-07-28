@@ -10,6 +10,8 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
 
+from iedb import build_minimal_table
+
 
 # The IEDB export has a two-row header: row 0 is the category group ("Reference",
 # "Epitope", ...) and row 1 is the field name ("PMID", "IEDB IRI", ...). Neither row
@@ -22,8 +24,8 @@ HEADER_FILE = "mhc_ligand_full_00.csv"
 # Defaults for the command line entry point. The data paths sit under tmp/, which is
 # gitignored, because the export and its Parquet run to gigabytes.
 DEFAULT_INPUT_PATH = "tmp/iedb_data"
-DEFAULT_PARQUET_PATH = "tmp/iedb_parquet/mhc_ligand_full.parquet"
-DEFAULT_COLUMN_JSON_PATH = "iedb/columns.json"
+DEFAULT_PARQUET_PATH = "tmp/iedb_parquet/iedb_mhc_ligand_full.parquet"
+DEFAULT_COLUMN_JSON_PATH = "iedb/columns/iedb_mhc_ligand_full.json"
 
 # Every shard is read as strings so that the shards concatenate cleanly, then the
 # columns that are genuinely numeric are cast back once, here. Widths are chosen
@@ -442,10 +444,27 @@ def main(argv: list[str] | None = None) -> int:
         default=DEFAULT_COLUMN_JSON_PATH,
         help=f"column JSON file to write (default: {DEFAULT_COLUMN_JSON_PATH})",
     )
+    parser.add_argument(
+        "--minimal",
+        default=build_minimal_table.DEFAULT_MINIMAL_PATH,
+        help=f"minimal table to write (default: {build_minimal_table.DEFAULT_MINIMAL_PATH})",
+    )
+    parser.add_argument(
+        "--skip-minimal",
+        action="store_true",
+        help="stop after the conversion, without building the minimal table",
+    )
     arguments = parser.parse_args(argv)
 
     try:
         run(arguments.input, arguments.parquet, arguments.columns)
+
+        if not arguments.skip_minimal:
+            build_minimal_table.run(
+                arguments.parquet,
+                arguments.minimal,
+                build_minimal_table.DEFAULT_COLUMN_JSON_PATH,
+            )
     except FileNotFoundError as error:
         # the usual cause is the export not having been downloaded yet, which is a
         # user error rather than a crash, so report it without a traceback

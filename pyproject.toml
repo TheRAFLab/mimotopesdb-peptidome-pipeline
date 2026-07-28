@@ -30,6 +30,7 @@ dependencies = [
 
 [project.scripts]
 iedb-import = "iedb.read_raw_data:main"
+iedb-minimal = "iedb.build_minimal_table:main"
 
 [project.urls]
 Repository = "https://github.com/TheRAFLab/mimotopesdb-peptidome-pipeline"

@@ -17,7 +17,7 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PARQUET_PATH = ROOT / "tmp" / "iedb_parquet" / "mhc_ligand_full.parquet"
+PARQUET_PATH = ROOT / "tmp" / "iedb_parquet" / "iedb_mhc_ligand_full.parquet"
 OUTPUT_DIR = ROOT / "tmp" / "tests"
 OUTPUT_PATH = OUTPUT_DIR / "class_i_assays_by_mhc_restriction.csv"
 
