@@ -46,7 +46,7 @@ def query_result():
         list[tuple]: The rows returned by the query.
     """
     if not PARQUET_PATH.exists():
-        pytest.skip(f"{PARQUET_PATH} not found, run iedb/read_raw_data.py first")
+        pytest.skip(f"{PARQUET_PATH} not found, run iedb-import first")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     query = QUERY.format(parquet_path=PARQUET_PATH)

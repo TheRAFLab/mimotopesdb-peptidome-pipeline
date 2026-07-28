@@ -1,3 +1,4 @@
+import argparse
 import json
 import os
 import re
@@ -17,6 +18,12 @@ HEADER_ROWS = 2
 
 # Only this shard carries the header; the rest are bare continuation rows.
 HEADER_FILE = "mhc_ligand_full_00.csv"
+
+# Defaults for the command line entry point. The data paths sit under tmp/, which is
+# gitignored, because the export and its Parquet run to gigabytes.
+DEFAULT_INPUT_PATH = "tmp/iedb_data"
+DEFAULT_PARQUET_PATH = "tmp/iedb_parquet/mhc_ligand_full.parquet"
+DEFAULT_COLUMN_JSON_PATH = "iedb/columns.json"
 
 # Every shard is read as strings so that the shards concatenate cleanly, then the
 # columns that are genuinely numeric are cast back once, here. Widths are chosen
@@ -406,9 +413,47 @@ def run(file_path: str, parquet_path: str, column_json_path: str) -> None:
     console.print()
 
 
-if __name__ == "__main__":
-    run(
-        "tmp/iedb_data",
-        "tmp/iedb_parquet/mhc_ligand_full.parquet",
-        "iedb/columns.json",
+def main(argv: list[str] | None = None) -> int:
+    """
+    Command line entry point, installed as iedb-import.
+
+    Args:
+        argv (list[str] | None): Arguments to parse, or None to read sys.argv.
+
+    Returns:
+        int: The process exit status.
+    """
+    parser = argparse.ArgumentParser(
+        prog="iedb-import",
+        description="Convert the sharded IEDB MHC ligand export to Parquet.",
     )
+    parser.add_argument(
+        "--input",
+        default=DEFAULT_INPUT_PATH,
+        help=f"directory holding the CSV shards (default: {DEFAULT_INPUT_PATH})",
+    )
+    parser.add_argument(
+        "--parquet",
+        default=DEFAULT_PARQUET_PATH,
+        help=f"Parquet file to write (default: {DEFAULT_PARQUET_PATH})",
+    )
+    parser.add_argument(
+        "--columns",
+        default=DEFAULT_COLUMN_JSON_PATH,
+        help=f"column JSON file to write (default: {DEFAULT_COLUMN_JSON_PATH})",
+    )
+    arguments = parser.parse_args(argv)
+
+    try:
+        run(arguments.input, arguments.parquet, arguments.columns)
+    except FileNotFoundError as error:
+        # the usual cause is the export not having been downloaded yet, which is a
+        # user error rather than a crash, so report it without a traceback
+        Console(stderr=True).print(f"[red]error:[/] {error}")
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

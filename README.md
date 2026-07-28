@@ -56,7 +56,7 @@ control.
 ## Usage
 
 ```bash
-uv run iedb/read_raw_data.py
+uv run iedb-import
 ```
 
 This writes `tmp/iedb_parquet/mhc_ligand_full.parquet` and refreshes
@@ -72,8 +72,16 @@ This writes `tmp/iedb_parquet/mhc_ligand_full.parquet` and refreshes
    Input                9.1 GB
    Output             131.1 MB
    Compression      70x smaller
-   Elapsed              23.6 s
+   Elapsed              21.6 s
 ```
+
+All three paths can be overridden:
+
+```bash
+uv run iedb-import --input /data/iedb --parquet /data/mhc_ligand_full.parquet
+```
+
+See `uv run iedb-import --help` for the full list.
 
 ### As a library
 
